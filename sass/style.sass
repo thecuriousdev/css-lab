@@ -1,0 +1,64 @@
+body
+    margin: 0
+    font-family: monospace
+    text-align: center
+    font-size: 14px
+    background: #EDF1F3
+h1
+    margin: 0
+    padding: 20px 0
+    font-size: 2.7em 
+    color: white 
+    text-shadow: 0px 1px 1px #ddd, 0px 2px 1px #d6d6d6, 0px 3px 1px #ccc, 0px 4px 1px #c5c5c5, 0px 5px 1px #cbcbcb, 0px 7px 5px rgba(0,0,0,.6);
+
+h3
+    color: #999
+    a
+        color: #777
+// tile container
+section
+    width: 880px 
+    margin: 0 auto
+    padding-top: 30px
+    overflow: hidden
+    .tile
+        position: relative
+        float: left
+        width: 400px
+        height: 300px
+
+        margin: 20px 
+        padding: 10px
+
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2)
+        border-radius: 4px
+
+        cursor: pointer
+
+        background: white
+        box-sizing: border-box
+
+        transition: all .3s ease-out
+
+        .overlay
+            position: absolute
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+            background: rgba(0,0,0,.01)
+        h3
+            margin-top: -35px
+            span
+                color: #bbb
+        iframe
+            width: 200%;
+            height: 200%;
+            transform: scale(0.5);
+            transform-origin: 0 0;
+        .tooltip
+            display: none
+
+        &:hover
+            transform: translateY(-3px)
+            box-shadow: 0 8px 10px rgba(0,0,0,.4)

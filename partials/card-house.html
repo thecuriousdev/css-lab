@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Card House</title>
+	<style>
+		body, html {
+		  margin: 0;
+		  width: 100%;
+		  height: 100%;
+		  overflow: auto;
+		  background-color: black;
+		}
+		button {
+		  position: absolute;
+		  width: 100%;
+		  height: 50px;
+		  background-color: #ecf0f1;
+		  border: 0;
+		  box-shadow: 0 5px 0px #7f8c8d;
+		  cursor: pointer;
+		  font-size: 18px;
+		  color: #2c3e50;
+		  outline: 0;
+		  z-index: 99;
+		}
+		button:active {
+		  margin-top: 3px;
+		  box-shadow: 0 2px 0px #7f8c8d;
+		}
+
+		.scene {
+		  width: 600px;
+		  height: 600px;
+		  -webkit-perspective: 1000px;
+		  perspective: 1000px;
+		  position: absolute;
+		  top: 10%;
+		  left: 50%;
+		  margin-left: -300px;
+		}
+
+		.container {
+		  width: 100%;
+		  height: 100%;
+		  position: relative;
+		  -webkit-transform-style: preserve-3d;
+		  transform-style: preserve-3d;
+		  -webkit-animation: rotate360 10s linear infinite;
+		  animation: rotate360 10s linear infinite;
+		}
+
+		.card {
+		  width: 100px;
+		  height: 150px;
+		  background-color: #e74c3c;
+		  float: left;
+		  position: absolute;
+		  top: 0px;
+		  left: 50px;
+		  border-radius: 10px;
+		  -webkit-transform-style: preserve-3d;
+		  transform-style: preserve-3d;
+		  -webkit-transition: all 0.4s ease-out;
+		  transition: all 0.4s ease-out;
+		}
+
+		.c1 {
+		  background-color: #1abc9c;
+		  z-index: 15;
+		}
+
+		.c2 {
+		  background-color: #2ecc71;
+		  z-index: 14;
+		}
+
+		.c3 {
+		  background-color: #3498db;
+		  z-index: 13;
+		}
+
+		.c4 {
+		  background-color: #9b59b6;
+		  z-index: 12;
+		}
+
+		.c5 {
+		  background-color: #34495e;
+		  z-index: 11;
+		}
+
+		.c6 {
+		  background-color: #f1c40f;
+		  z-index: 10;
+		}
+
+		.c7 {
+		  background-color: #e67e22;
+		  z-index: 9;
+		}
+
+		.c8 {
+		  background-color: #e74c3c;
+		  z-index: 8;
+		}
+
+		.c9 {
+		  background-color: #95a5a6;
+		  z-index: 7;
+		}
+
+		.c10 {
+		  background-color: #16a085;
+		  z-index: 6;
+		}
+
+		.c11 {
+		  background-color: #2980b9;
+		  z-index: 5;
+		}
+
+		.c12 {
+		  background-color: #8e44ad;
+		  z-index: 4;
+		}
+
+		.c13 {
+		  background-color: #d35400;
+		  z-index: 3;
+		}
+
+		.c14 {
+		  background-color: #f39c12;
+		  z-index: 2;
+		}
+
+		.c15 {
+		  background-color: #8e44ad;
+		  z-index: 1;
+		}
+
+		.house .c15 {
+		  -webkit-transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  left: 450px;
+		  top: 400px;
+		}
+
+		.house .c14 {
+		  -webkit-transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  left: 376px;
+		  top: 400px;
+		}
+
+		.house .c13 {
+		  -webkit-transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  left: 302px;
+		  top: 400px;
+		}
+
+		.house .c12 {
+		  -webkit-transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  left: 228px;
+		  top: 400px;
+		}
+
+		.house .c11 {
+		  -webkit-transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  left: 154px;
+		  top: 400px;
+		}
+
+		.house .c10 {
+		  -webkit-transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  left: 80px;
+		  top: 400px;
+		}
+
+		.house .c9 {
+		  -webkit-transform: rotateY(90deg) rotateX(90deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(90deg) translate3d(0, 0, 0px) !important;
+		  left: 339px;
+		  top: 334px;
+		}
+
+		.house .c8 {
+		  -webkit-transform: rotateY(90deg) rotateX(90deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(90deg) translate3d(0, 0, 0px) !important;
+		  left: 191px;
+		  top: 334px;
+		}
+
+		.house .c7 {
+		  -webkit-transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  left: 376px;
+		  top: 268px;
+		}
+
+		.house .c6 {
+		  -webkit-transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  left: 302px;
+		  top: 268px;
+		}
+
+		.house .c5 {
+		  -webkit-transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  left: 228px;
+		  top: 268px;
+		}
+
+		.house .c4 {
+		  -webkit-transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  left: 154px;
+		  top: 268px;
+		}
+
+		.house .c3 {
+		  -webkit-transform: rotateY(90deg) rotateX(90deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(90deg) translate3d(0, 0, 0px) !important;
+		  left: 264px;
+		  top: 201px;
+		}
+
+		.house .c2 {
+		  -webkit-transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(29deg) translate3d(0, 0, 0px) !important;
+		  left: 302px;
+		  top: 136px;
+		}
+
+		.house .c1 {
+		  -webkit-transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  transform: rotateY(90deg) rotateX(-29deg) translate3d(0, 0, 0px) !important;
+		  left: 228px;
+		  top: 136px;
+		}
+
+		@keyframes rotate360 {
+		  from {
+		    -webkit-transform: rotateY(360deg);
+		    transform: rotateY(360deg);
+		  }
+		}
+		@-webkit-keyframes rotate360 {
+		  from {
+		    -webkit-transform: rotateY(360deg);
+		  }
+		}
+	</style>
+</head>
+<body>
+	<button onclick="toggleHouse()">CLICK TO TOGGLE THE HOUSE</button>
+
+	<div class="scene">
+		<div class="container">
+			<div class="card c1"></div>
+			<div class="card c2"></div>
+			<div class="card c3"></div>
+			<div class="card c4"></div>
+			<div class="card c5"></div>
+			<div class="card c6"></div>
+			<div class="card c7"></div>
+			<div class="card c8"></div>
+			<div class="card c9"></div>
+			<div class="card c10"></div>
+			<div class="card c11"></div>
+			<div class="card c12"></div>
+			<div class="card c13"></div>
+			<div class="card c14"></div>
+			<div class="card c15"></div>
+		</div>
+	</div>
+	
+	<script>
+		var nScene = document.querySelector('.scene');
+
+		function toggleHouse () {
+		  nScene.classList.contains('house') ? delayASC() : delayDESC();
+
+		  nScene.classList.toggle('house');
+		}
+
+		function delayDESC () {
+		  var iCounter = 1;
+		  var nNodes 	 = document.querySelectorAll('.card');
+		  for (var _i=nNodes.length-1; _i>=0; _i--) {
+		    nNodes[_i].style.transitionDelay = (iCounter++ * .2) + 's';
+		  }
+		}
+
+		function delayASC () {
+		  var iCounter = 1;
+		  var nNodes 	 = document.querySelectorAll('.card');
+		  for (var _i=0; _i<nNodes.length; _i++) {
+		    nNodes[_i].style.transitionDelay = (iCounter++ * .2) + 's';
+		  }
+		}
+
+		function translateDESC () {
+		  var iCounter = 0;
+		  var nNodes 	 = document.querySelectorAll('.card');
+
+		  for (var _i=nNodes.length-1; _i>=0; _i--) {
+		    nNodes[_i].style.transform = 'rotateX(90deg) translate3d(0,0,'+ (iCounter++ *2) +'px)';
+		  }
+		}
+
+		translateDESC();
+	</script>
+</body>
+</html>
