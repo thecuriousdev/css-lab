@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Twister</title>
+  <style class="cp-pen-styles">
+  body, html {
+    background: white;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.wrapper {
+  width: 1200px;
+}
+
+.wrapper div {
+  height: 100px;
+  width: 2px;
+  background-color: black;
+  margin: 2px;
+  float: left;
+  animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+  from {
+    transform: rotate(-360deg);
+  }
+}
+</style>
+</head>
+<body>
+    <div class="wrapper"></div>
+
+    <script>
+      for (var i=0; i<200; i++) {
+        var el = document.createElement('div');
+        el.style.animationDelay = i * 0.05 + 's';
+        document.querySelector('.wrapper').appendChild(el);
+      }
+    </script>
+</body>
+</html>
